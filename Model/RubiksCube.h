@@ -1,4 +1,3 @@
-
 #ifndef RUBIKS_CUBE_SOLVER_RUBIKSCUBE_H
 #define RUBIKS_CUBE_SOLVER_RUBIKSCUBE_H
 
@@ -87,11 +86,11 @@ public:
      * Row and Column Numberings:
      * rx -> row numbering
      * cx -> column numbering
-     * bx -> both row and column numberint
+     * bx -> both row and column numbering
      *
-     *             .  .  r2
-     *             .  .  r1
-     *             c2 c1 b0
+     *             b0 c1 c2
+     *             r1  .  .
+     *             r2  .  .
      *
      *  b0 c1 c2   b0 c1 c2   b0 c1 c2   b0 c1 c2
      *  r1  .  .   r1  .  .   r1  .  .   r1  .  .
