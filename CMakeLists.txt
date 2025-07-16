@@ -1,11 +1,20 @@
-cmake_minimum_required(VERSION 3.31)
-project(Rubiks_Cube_Solver)
+cmake_minimum_required(VERSION 3.20)
+project(rubiks_cube_solver)
 
-set(CMAKE_CXX_STANDARD 20)
+# Set C++11 standard to fix enum class warnings
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_executable(Rubiks_Cube_Solver
-        main.cpp
+# Include all directories
+include_directories(Model)
+
+# List all source files
+add_executable(rubiks_cube_solver
         Model/RubiksCube.cpp
         Model/RubiksCube.h
-        main.cpp Model/RubiksCube3dArray.cpp
+        Model/RubiksCube3dArray.cpp
+        Model/RubiksCube3dArray.h  # New file
+        Model/RubiksCube1dArray.cpp
+        Model/RubiksCube1dArray.h  # New file
+        main.cpp
 )

@@ -1,3 +1,3 @@
-/Users/abhinavkarthikprattipati/CLionProjects/Rubiks_Cube_Solver/cmake-build-debug/CMakeFiles/Rubiks_Cube_Solver.dir
+/Users/abhinavkarthikprattipati/CLionProjects/Rubiks_Cube_Solver/cmake-build-debug/CMakeFiles/rubiks_cube_solver.dir
 /Users/abhinavkarthikprattipati/CLionProjects/Rubiks_Cube_Solver/cmake-build-debug/CMakeFiles/edit_cache.dir
 /Users/abhinavkarthikprattipati/CLionProjects/Rubiks_Cube_Solver/cmake-build-debug/CMakeFiles/rebuild_cache.dir

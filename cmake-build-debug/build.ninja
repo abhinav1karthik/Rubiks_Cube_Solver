@@ -11,7 +11,7 @@
 # =============================================================================
 
 # =============================================================================
-# Project: Rubiks_Cube_Solver
+# Project: rubiks_cube_solver
 # Configurations: Debug
 # =============================================================================
 
@@ -41,41 +41,57 @@ include CMakeFiles/rules.ninja
 
 cmake_ninja_workdir = /Users/abhinavkarthikprattipati/CLionProjects/Rubiks_Cube_Solver/cmake-build-debug/
 # =============================================================================
-# Object build statements for EXECUTABLE target Rubiks_Cube_Solver
+# Object build statements for EXECUTABLE target rubiks_cube_solver
 
 
 #############################################
-# Order-only phony target for Rubiks_Cube_Solver
+# Order-only phony target for rubiks_cube_solver
 
-build cmake_object_order_depends_target_Rubiks_Cube_Solver: phony || .
+build cmake_object_order_depends_target_rubiks_cube_solver: phony || .
 
-build CMakeFiles/Rubiks_Cube_Solver.dir/main.cpp.o: CXX_COMPILER__Rubiks_Cube_Solver_unscanned_Debug /Users/abhinavkarthikprattipati/CLionProjects/Rubiks_Cube_Solver/main.cpp || cmake_object_order_depends_target_Rubiks_Cube_Solver
-  DEP_FILE = CMakeFiles/Rubiks_Cube_Solver.dir/main.cpp.o.d
-  FLAGS = -g -std=gnu++20 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk -mmacosx-version-min=14.6 -fcolor-diagnostics
-  OBJECT_DIR = CMakeFiles/Rubiks_Cube_Solver.dir
-  OBJECT_FILE_DIR = CMakeFiles/Rubiks_Cube_Solver.dir
+build CMakeFiles/rubiks_cube_solver.dir/Model/RubiksCube.cpp.o: CXX_COMPILER__rubiks_cube_solver_unscanned_Debug /Users/abhinavkarthikprattipati/CLionProjects/Rubiks_Cube_Solver/Model/RubiksCube.cpp || cmake_object_order_depends_target_rubiks_cube_solver
+  DEP_FILE = CMakeFiles/rubiks_cube_solver.dir/Model/RubiksCube.cpp.o.d
+  FLAGS = -g -std=gnu++11 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk -mmacosx-version-min=14.6 -fcolor-diagnostics
+  INCLUDES = -I/Users/abhinavkarthikprattipati/CLionProjects/Rubiks_Cube_Solver/Model
+  OBJECT_DIR = CMakeFiles/rubiks_cube_solver.dir
+  OBJECT_FILE_DIR = CMakeFiles/rubiks_cube_solver.dir/Model
 
-build CMakeFiles/Rubiks_Cube_Solver.dir/Model/RubiksCube.cpp.o: CXX_COMPILER__Rubiks_Cube_Solver_unscanned_Debug /Users/abhinavkarthikprattipati/CLionProjects/Rubiks_Cube_Solver/Model/RubiksCube.cpp || cmake_object_order_depends_target_Rubiks_Cube_Solver
-  DEP_FILE = CMakeFiles/Rubiks_Cube_Solver.dir/Model/RubiksCube.cpp.o.d
-  FLAGS = -g -std=gnu++20 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk -mmacosx-version-min=14.6 -fcolor-diagnostics
-  OBJECT_DIR = CMakeFiles/Rubiks_Cube_Solver.dir
-  OBJECT_FILE_DIR = CMakeFiles/Rubiks_Cube_Solver.dir/Model
+build CMakeFiles/rubiks_cube_solver.dir/Model/RubiksCube3dArray.cpp.o: CXX_COMPILER__rubiks_cube_solver_unscanned_Debug /Users/abhinavkarthikprattipati/CLionProjects/Rubiks_Cube_Solver/Model/RubiksCube3dArray.cpp || cmake_object_order_depends_target_rubiks_cube_solver
+  DEP_FILE = CMakeFiles/rubiks_cube_solver.dir/Model/RubiksCube3dArray.cpp.o.d
+  FLAGS = -g -std=gnu++11 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk -mmacosx-version-min=14.6 -fcolor-diagnostics
+  INCLUDES = -I/Users/abhinavkarthikprattipati/CLionProjects/Rubiks_Cube_Solver/Model
+  OBJECT_DIR = CMakeFiles/rubiks_cube_solver.dir
+  OBJECT_FILE_DIR = CMakeFiles/rubiks_cube_solver.dir/Model
+
+build CMakeFiles/rubiks_cube_solver.dir/Model/RubiksCube1dArray.cpp.o: CXX_COMPILER__rubiks_cube_solver_unscanned_Debug /Users/abhinavkarthikprattipati/CLionProjects/Rubiks_Cube_Solver/Model/RubiksCube1dArray.cpp || cmake_object_order_depends_target_rubiks_cube_solver
+  DEP_FILE = CMakeFiles/rubiks_cube_solver.dir/Model/RubiksCube1dArray.cpp.o.d
+  FLAGS = -g -std=gnu++11 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk -mmacosx-version-min=14.6 -fcolor-diagnostics
+  INCLUDES = -I/Users/abhinavkarthikprattipati/CLionProjects/Rubiks_Cube_Solver/Model
+  OBJECT_DIR = CMakeFiles/rubiks_cube_solver.dir
+  OBJECT_FILE_DIR = CMakeFiles/rubiks_cube_solver.dir/Model
+
+build CMakeFiles/rubiks_cube_solver.dir/main.cpp.o: CXX_COMPILER__rubiks_cube_solver_unscanned_Debug /Users/abhinavkarthikprattipati/CLionProjects/Rubiks_Cube_Solver/main.cpp || cmake_object_order_depends_target_rubiks_cube_solver
+  DEP_FILE = CMakeFiles/rubiks_cube_solver.dir/main.cpp.o.d
+  FLAGS = -g -std=gnu++11 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk -mmacosx-version-min=14.6 -fcolor-diagnostics
+  INCLUDES = -I/Users/abhinavkarthikprattipati/CLionProjects/Rubiks_Cube_Solver/Model
+  OBJECT_DIR = CMakeFiles/rubiks_cube_solver.dir
+  OBJECT_FILE_DIR = CMakeFiles/rubiks_cube_solver.dir
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target Rubiks_Cube_Solver
+# Link build statements for EXECUTABLE target rubiks_cube_solver
 
 
 #############################################
-# Link the executable Rubiks_Cube_Solver
+# Link the executable rubiks_cube_solver
 
-build Rubiks_Cube_Solver: CXX_EXECUTABLE_LINKER__Rubiks_Cube_Solver_Debug CMakeFiles/Rubiks_Cube_Solver.dir/main.cpp.o CMakeFiles/Rubiks_Cube_Solver.dir/Model/RubiksCube.cpp.o
+build rubiks_cube_solver: CXX_EXECUTABLE_LINKER__rubiks_cube_solver_Debug CMakeFiles/rubiks_cube_solver.dir/Model/RubiksCube.cpp.o CMakeFiles/rubiks_cube_solver.dir/Model/RubiksCube3dArray.cpp.o CMakeFiles/rubiks_cube_solver.dir/Model/RubiksCube1dArray.cpp.o CMakeFiles/rubiks_cube_solver.dir/main.cpp.o
   FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk -mmacosx-version-min=14.6
-  OBJECT_DIR = CMakeFiles/Rubiks_Cube_Solver.dir
+  OBJECT_DIR = CMakeFiles/rubiks_cube_solver.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_FILE = Rubiks_Cube_Solver
-  TARGET_PDB = Rubiks_Cube_Solver.dbg
+  TARGET_FILE = rubiks_cube_solver
+  TARGET_PDB = rubiks_cube_solver.dbg
 
 
 #############################################
@@ -111,14 +127,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 #############################################
 # Folder: /Users/abhinavkarthikprattipati/CLionProjects/Rubiks_Cube_Solver/cmake-build-debug
 
-build codegen: phony
-
-# =============================================================================
-
-#############################################
-# Folder: /Users/abhinavkarthikprattipati/CLionProjects/Rubiks_Cube_Solver/cmake-build-debug
-
-build all: phony Rubiks_Cube_Solver
+build all: phony rubiks_cube_solver
 
 # =============================================================================
 # Built-in targets
