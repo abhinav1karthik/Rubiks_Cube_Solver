@@ -2,9 +2,6 @@
 #include <cstdlib>
 #include <functional>
 #include <string>
-inline int RubiksCube1dArray::getIndex(int ind, int row, int col) const {
-    return (ind * 9) + (row * 3) + col;
-}
 
 void RubiksCube1dArray::rotateFace(int ind) {
     char temp_arr[9] = {};

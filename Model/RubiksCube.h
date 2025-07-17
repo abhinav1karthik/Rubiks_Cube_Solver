@@ -38,7 +38,7 @@ public:
     virtual ~RubiksCube() = default;
 
     virtual COLOR getColor(FACE face, unsigned row, unsigned col) const = 0;
-    char getColorLetter(COLOR color) const;
+    static char getColorLetter(COLOR color);
     virtual bool isSolved() const = 0;
     std::string getMove(MOVE ind) const;
     void print() const;

@@ -6,7 +6,10 @@
 class RubiksCube1dArray : public RubiksCube {
 public:
     char cube[54];
-    inline int getIndex(int ind, int row, int col) const;
+    static inline int getIndex(int ind, int row, int col){
+        return (ind * 9) + (row * 3) + col;
+    }
+
     void rotateFace(int ind);
     RubiksCube1dArray();
     COLOR getColor(FACE face, unsigned row, unsigned col) const override;

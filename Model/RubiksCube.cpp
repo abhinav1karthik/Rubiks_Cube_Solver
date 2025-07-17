@@ -1,6 +1,6 @@
 #include "RubiksCube.h"
 
-char RubiksCube::getColorLetter(COLOR color) const {
+char RubiksCube::getColorLetter(COLOR color) {
     switch (color) {
         case COLOR::BLUE: return 'B';
         case COLOR::GREEN: return 'G';
