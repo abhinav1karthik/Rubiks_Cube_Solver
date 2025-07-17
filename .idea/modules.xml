@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Rubiks-Cube-Solver.iml" filepath="$PROJECT_DIR$/.idea/Rubiks-Cube-Solver.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Rubiks_Cube_Solver.iml" filepath="$PROJECT_DIR$/.idea/Rubiks_Cube_Solver.iml" />
     </modules>
   </component>
 </project>

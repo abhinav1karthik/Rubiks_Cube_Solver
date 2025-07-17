@@ -1,23 +1,21 @@
 #include <iostream>
 #include "Model/RubiksCube3dArray.h"
 #include "Model/RubiksCube1dArray.h"
+#include "Model/RubiksCubeBitboard.h"
 
 int main() {
-    RubiksCube1dArray cube;  // Or RubiksCube3dArray
+    RubiksCubeBitboard cube;
     cube.print();
 
-    if (cube.isSolved()) std::cout << "SOLVED\n";
-    else std::cout << "NOT SOLVED\n";
+    // Test moves
+    cube.f().print();
 
-    cube.f().u().r().b().l().d().print();
-
-    if (cube.isSolved()) std::cout << "SOLVED\n";
-    else std::cout << "NOT SOLVED\n";
-
-    cube.invert(RubiksCube1dArray::MOVE::D).invert(RubiksCube1dArray::MOVE::L).invert(RubiksCube1dArray::MOVE::B).invert(RubiksCube1dArray::MOVE::R).invert(RubiksCube1dArray::MOVE::U).invert(RubiksCube1dArray::MOVE::F).print();
-
-    if (cube.isSolved()) std::cout << "SOLVED\n";
-    else std::cout << "NOT SOLVED\n";
+    // Test solving
+    if (cube.isSolved()) {
+        std::cout << "Cube is solved!" << std::endl;
+    } else {
+        std::cout << "Cube is NOT solved!" << std::endl;
+    }
 
     return 0;
 }

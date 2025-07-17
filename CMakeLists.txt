@@ -13,8 +13,10 @@ add_executable(rubiks_cube_solver
         Model/RubiksCube.cpp
         Model/RubiksCube.h
         Model/RubiksCube3dArray.cpp
-        Model/RubiksCube3dArray.h  # New file
+        Model/RubiksCube3dArray.h
         Model/RubiksCube1dArray.cpp
-        Model/RubiksCube1dArray.h  # New file
+        Model/RubiksCube1dArray.h
         main.cpp
+        Model/RubiksCubeBitboard.h
+        Model/RubiksCubeBitboard.cpp
 )
