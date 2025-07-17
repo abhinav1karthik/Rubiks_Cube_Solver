@@ -6,7 +6,6 @@
 
 class RubiksCubeBitboard : public RubiksCube {
 private:
-    uint64_t bitboard[6];
     uint64_t all_colors[6];
     static constexpr int arr[3][3] = {{0, 1, 2}, {7, 8, 3}, {6, 5, 4}};
 
@@ -21,6 +20,7 @@ private:
                    int s2, int s2_1, int s2_2, int s2_3);
 
 public:
+    uint64_t bitboard[6];
     RubiksCubeBitboard();
 
     COLOR getColor(FACE face, unsigned row, unsigned col) const override;
@@ -49,6 +49,12 @@ public:
     RubiksCube &r2() override;
     RubiksCube &b2() override;
     RubiksCube &d2() override;
+    bool operator==(const RubiksCubeBitboard &r1) const;
+    RubiksCubeBitboard &operator=(const RubiksCubeBitboard &r1);
+};
+
+struct HashBitboard {
+    size_t operator()(const RubiksCubeBitboard &r1) const;
 };
 
 #endif // RUBIKSCUBEBITBOARD_H

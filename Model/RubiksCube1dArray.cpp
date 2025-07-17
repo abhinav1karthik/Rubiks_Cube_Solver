@@ -1,6 +1,7 @@
 #include "RubiksCube1dArray.h"
 #include <cstdlib>
-
+#include <functional>
+#include <string>
 inline int RubiksCube1dArray::getIndex(int ind, int row, int col) const {
     return (ind * 9) + (row * 3) + col;
 }
@@ -206,4 +207,24 @@ RubiksCube& RubiksCube1dArray::d2() {
     this->d();
     this->d();
     return *this;
+}
+
+bool RubiksCube1dArray::operator==(const RubiksCube1dArray &r1) const {
+    for (int i = 0; i < 54; i++) {
+        if (cube[i] != r1.cube[i]) return false;
+    }
+    return true;
+}
+
+RubiksCube1dArray &RubiksCube1dArray::operator=(const RubiksCube1dArray &r1) {
+    for (int i = 0; i < 54; i++) {
+        cube[i] = r1.cube[i];
+    }
+    return *this;
+}
+
+size_t Hash1d::operator()(const RubiksCube1dArray &r1) const {
+    std::string str = "";
+    for (int i = 0; i < 54; i++) str += r1.cube[i];
+    return std::hash<std::string>()(str);
 }

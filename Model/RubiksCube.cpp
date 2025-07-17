@@ -134,10 +134,12 @@ void RubiksCube::print() const {
     std::cout << "\n";
 }
 
-RubiksCube &RubiksCube::randomShuffleCube(unsigned int times) {
+std::vector<RubiksCube::MOVE> RubiksCube::randomShuffleCube(unsigned int times) {
+    std::vector<MOVE> moves;
     for (unsigned int i = 0; i < times; i++) {
         unsigned int selectMove = (rand() % 18);
+        moves.push_back(static_cast<MOVE>(selectMove));
         this->move(static_cast<MOVE>(selectMove));
     }
-    return *this;
+    return moves;
 }

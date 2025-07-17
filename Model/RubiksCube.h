@@ -3,14 +3,8 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 #include <cstdlib>
-
-/**
- * A base class for all Rubik's Cube Model. There are various representation for Rubik's Cube.
- * Each one has it's own special ways of definitions. This class provides a shared functionality
- * between all models.
- * We'll benchmark all models and observe which one is better for performance.
- */
 
 class RubiksCube {
 public:
@@ -48,7 +42,7 @@ public:
     virtual bool isSolved() const = 0;
     std::string getMove(MOVE ind) const;
     void print() const;
-    RubiksCube &randomShuffleCube(unsigned int times);
+    std::vector<MOVE> randomShuffleCube(unsigned int times);
 
     RubiksCube &move(MOVE ind);
     RubiksCube &invert(MOVE ind);

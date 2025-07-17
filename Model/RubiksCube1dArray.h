@@ -4,12 +4,10 @@
 #include "RubiksCube.h"
 
 class RubiksCube1dArray : public RubiksCube {
-private:
+public:
     char cube[54];
     inline int getIndex(int ind, int row, int col) const;
     void rotateFace(int ind);
-
-public:
     RubiksCube1dArray();
     COLOR getColor(FACE face, unsigned row, unsigned col) const override;
     bool isSolved() const override;
@@ -32,6 +30,12 @@ public:
     RubiksCube& d() override;
     RubiksCube& dPrime() override;
     RubiksCube& d2() override;
+    bool operator==(const RubiksCube1dArray &r1) const;
+    RubiksCube1dArray &operator=(const RubiksCube1dArray &r1);
+};
+
+struct Hash1d {
+    size_t operator()(const RubiksCube1dArray &r1) const;
 };
 
 #endif

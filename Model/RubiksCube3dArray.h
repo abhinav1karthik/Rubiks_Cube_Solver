@@ -4,11 +4,9 @@
 #include "RubiksCube.h"
 
 class RubiksCube3dArray : public RubiksCube {
-private:
+public:
     char cube[6][3][3];
     void rotateFace(int ind);
-
-public:
     RubiksCube3dArray();
     COLOR getColor(FACE face, unsigned row, unsigned col) const override;
     bool isSolved() const override;
@@ -31,6 +29,13 @@ public:
     RubiksCube& d() override;
     RubiksCube& dPrime() override;
     RubiksCube& d2() override;
+
+    bool operator==(const RubiksCube3dArray &r1) const;
+    RubiksCube3dArray &operator=(const RubiksCube3dArray &r1);
+};
+
+struct Hash3d {
+    size_t operator()(const RubiksCube3dArray &r1) const;
 };
 
 #endif
