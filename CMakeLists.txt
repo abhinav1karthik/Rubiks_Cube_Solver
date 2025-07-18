@@ -21,4 +21,5 @@ add_executable(rubiks_cube_solver
         Model/RubiksCubeBitboard.cpp
         Solver/DFSSolver.h
         Solver/BFSSolver.h
+        Solver/IDDFSSolver.h
 )
