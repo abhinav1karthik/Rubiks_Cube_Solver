@@ -6,6 +6,7 @@
 #include "Model/RubiksCube1dArray.h"
 #include "Model/RubiksCubeBitboard.h"
 #include "Solver/DFSSolver.h"
+#include "Solver/BFSSolver.h"
 
 using namespace std;
 
@@ -22,8 +23,8 @@ int main() {
     cout << "\n";
     myrc.print();
 
-    DFSSolver<RubiksCube1dArray, Hash1d> dfsSolver(cube, 6);
-    vector<RubiksCube::MOVE> solve_moves = dfsSolver.solve();
+    BFSSolver<RubiksCube1dArray, Hash1d> bfsSolver(cube);
+    vector<RubiksCube::MOVE> solve_moves = bfsSolver.solve();
 
     for (auto move: solve_moves) {
         cout << cube.getMove(move) << " ";
@@ -31,7 +32,7 @@ int main() {
         myrc.print();
     }
     cout << "\n";
-    dfsSolver.rubiksCube.print();
+    bfsSolver.rubiksCube.print();
 
     return 0;
 }
