@@ -1,5 +1,5 @@
 #include "RubiksCube.h"
-
+#include <cstdlib>
 char RubiksCube::getColorLetter(COLOR color) {
     switch (color) {
         case COLOR::BLUE: return 'B';
@@ -136,6 +136,7 @@ void RubiksCube::print() const {
 
 std::vector<RubiksCube::MOVE> RubiksCube::randomShuffleCube(unsigned int times) {
     std::vector<MOVE> moves;
+    srand(time(0));
     for (unsigned int i = 0; i < times; i++) {
         unsigned int selectMove = (rand() % 18);
         moves.push_back(static_cast<MOVE>(selectMove));

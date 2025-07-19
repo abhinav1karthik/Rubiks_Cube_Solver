@@ -22,4 +22,6 @@ add_executable(rubiks_cube_solver
         Solver/DFSSolver.h
         Solver/BFSSolver.h
         Solver/IDDFSSolver.h
+        Model/PatternDatabase/PatternDatabase.h
+        Solver/IDAstarSolver.h
 )
