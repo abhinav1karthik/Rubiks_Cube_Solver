@@ -7,7 +7,7 @@
 #include <unordered_map>
 #include <vector>
 #include "../Model/RubiksCube.h"
-#include "../PatternDatabases/PatternDatabase.h"
+#include "../Model/PatternDatabase/PatternDatabase.h"
 
 
 template<typename T, typename H>
