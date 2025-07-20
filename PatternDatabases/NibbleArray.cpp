@@ -1,5 +1,5 @@
 #include "NibbleArray.h"
-
+#include <cassert>
 using namespace std;
 
 NibbleArray::NibbleArray(const size_t size, const uint8_t val) :

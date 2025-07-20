@@ -3,7 +3,7 @@
 
 #include "RubiksCube.h"
 #include <cstdint>
-
+#include <string>
 class RubiksCubeBitboard : public RubiksCube {
 private:
     uint64_t all_colors[6];
@@ -18,6 +18,8 @@ private:
     void rotateFace(int ind);
     void rotateSide(int s1, int s1_1, int s1_2, int s1_3,
                    int s2, int s2_1, int s2_2, int s2_3);
+    int get5bitCorner(const std::string& corner) const;
+    std::string getCornerColorString(uint8_t cornerIndex) const;
 
 public:
     uint64_t bitboard[6];
@@ -49,6 +51,7 @@ public:
     RubiksCube &r2() override;
     RubiksCube &b2() override;
     RubiksCube &d2() override;
+    uint64_t getCorners();
     bool operator==(const RubiksCubeBitboard &r1) const;
     RubiksCubeBitboard &operator=(const RubiksCubeBitboard &r1);
 };

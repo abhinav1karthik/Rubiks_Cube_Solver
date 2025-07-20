@@ -7,13 +7,13 @@
 #include <unordered_map>
 #include <vector>
 #include "../Model/RubiksCube.h"
-#include "../Model/PatternDatabase/PatternDatabase.h"
-
+//#include "../Model/PatternDatabase/PatternDatabase.h"
+#include "../PatternDatabases/CornerPatternDatabase.h"
 
 template<typename T, typename H>
 class IDAstarSolver {
 private:
-    PatternDatabase<T> patternDB;
+    CornerPatternDatabase cornerDB;
     vector<RubiksCube::MOVE> moves;
     unordered_map<T, RubiksCube::MOVE, H> move_done;
     unordered_map<T, bool, H> visited;
@@ -46,7 +46,7 @@ private:
     pair<T, int> IDAstar(int bound) {
 //        priority_queue contains pair(Node, move done to reach that)
         priority_queue<pair<Node, int>, vector<pair<Node, int>>, compareCube> pq;
-        Node start = Node(rubiksCube, 0, patternDB.getEstimate(rubiksCube));
+        Node start = Node(rubiksCube, 0, cornerDB.getNumMoves(rubiksCube));
         pq.push(make_pair(start, 0));
         int next_bound = 100;
         while (!pq.empty()) {
@@ -65,7 +65,7 @@ private:
                 auto curr_move = RubiksCube::MOVE(i);
                 node.cube.move(curr_move);
                 if (!visited[node.cube]) {
-                    node.estimate = patternDB.getEstimate(node.cube);
+                    node.estimate = cornerDB.getNumMoves(node.cube);
                     if (node.estimate + node.depth > bound) {
                         next_bound = min(next_bound, node.estimate + node.depth);
                     } else {
@@ -82,8 +82,9 @@ private:
 public:
     T rubiksCube;
 
-    IDAstarSolver(T _rubiksCube) {
+    IDAstarSolver(T _rubiksCube, string fileName) {
         rubiksCube = _rubiksCube;
+        cornerDB.fromFile(fileName);
     }
 
     vector<RubiksCube::MOVE> solve() {

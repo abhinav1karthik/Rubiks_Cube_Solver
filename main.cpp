@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include <string>
 #include <unordered_map>
@@ -9,8 +10,14 @@
 #include "Solver/BFSSolver.h"
 #include "Solver/IDDFSSolver.h"
 #include "Solver/IDAstarSolver.h"
+#include "PatternDatabases/CornerDBMaker.h"
 
 using namespace std;
+
+bool fileExists(const string& fileName) {
+    ifstream file(fileName);
+    return file.good();
+}
 
 int main() {
     // RubiksCube1dArray cube;
@@ -252,18 +259,46 @@ int main() {
     // }
     // cout << "\n";
     // iddfsSolver.rubiksCube.print();
-    RubiksCubeBitboard cube;
-    cube.print();
+    // CornerDBMaker Testing --------------------------------------------------------------------------
+    try {
+        // CornerDBMaker Testing --------------------------------------------------------------------------
+        std::string fileName = "Databases/Depth9DB.txt";
 
-    vector<RubiksCube::MOVE> shuffle_moves = cube.randomShuffleCube(5);
-    for (auto move: shuffle_moves) cout << cube.getMove(move) << " ";
-    cout << "\n";
-    cube.print();
+        // Check if database exists
+        if (!fileExists(fileName)) {
+            cout << "Creating new database..." << endl;
+            CornerDBMaker dbMaker(fileName, 0x99);
+            dbMaker.bfsAndStore();
+            cout << "Database created successfully!" << endl;
+        } else {
+            cout << "Using existing database" << endl;
+        }
 
-    IDAstarSolver<RubiksCubeBitboard, HashBitboard> idAstarSolver(cube);
-    vector<RubiksCube::MOVE> solve_moves = idAstarSolver.solve();
-    for (auto move: solve_moves) cout << cube.getMove(move) << " ";
-    cout << "\n";
-    idAstarSolver.rubiksCube.print();
+        RubiksCubeBitboard cube;
+        auto shuffleMoves = cube.randomShuffleCube(12);
+        cube.print();
+        for (auto move: shuffleMoves) cout << cube.getMove(move) << " ";
+        cout << "\n";
+
+        IDAstarSolver<RubiksCubeBitboard, HashBitboard> idaStarSolver(cube, fileName);
+        auto moves = idaStarSolver.solve();
+
+        idaStarSolver.rubiksCube.print();
+        for (auto move: moves) cout << cube.getMove(move) << " ";
+        cout << "\n";
+    }
+    catch (const char* msg) {
+        std::cerr << "Error: " << msg << std::endl;
+        return 1;
+    }
+    catch (const std::exception& e) {
+        std::cerr << "Exception: " << e.what() << std::endl;
+        return 1;
+    }
+    catch (...) {
+        std::cerr << "Unknown error occurred" << std::endl;
+        return 1;
+    }
     return 0;
+
 }

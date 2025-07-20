@@ -1,5 +1,7 @@
 #include "RubiksCubeBitboard.h"
 #include <functional>
+#include <string>
+#include <array>
 typedef RubiksCube::FACE FACE;
 typedef RubiksCube::COLOR COLOR;
 
@@ -271,4 +273,115 @@ size_t HashBitboard::operator()(const RubiksCubeBitboard &r1) const {
     uint64_t final_hash = r1.bitboard[0];
     for (int i = 1; i < 6; i++) final_hash ^= r1.bitboard[i];
     return static_cast<size_t>(final_hash);
+}
+std::string RubiksCubeBitboard::getCornerColorString(uint8_t cornerIndex) const {
+    std::string str;
+    switch (cornerIndex) {
+        // UFR
+        case 0:
+            str += getColorLetter(getColor(FACE::UP, 2, 2));
+            str += getColorLetter(getColor(FACE::FRONT, 0, 2));
+            str += getColorLetter(getColor(FACE::RIGHT, 0, 0));
+            break;
+
+        // UFL
+        case 1:
+            str += getColorLetter(getColor(FACE::UP, 2, 0));
+            str += getColorLetter(getColor(FACE::FRONT, 0, 0));
+            str += getColorLetter(getColor(FACE::LEFT, 0, 2));
+            break;
+
+        // UBL
+        case 2:
+            str += getColorLetter(getColor(FACE::UP, 0, 0));
+            str += getColorLetter(getColor(FACE::BACK, 0, 2));
+            str += getColorLetter(getColor(FACE::LEFT, 0, 0));
+            break;
+
+        // UBR
+        case 3:
+            str += getColorLetter(getColor(FACE::UP, 0, 2));
+            str += getColorLetter(getColor(FACE::BACK, 0, 0));
+            str += getColorLetter(getColor(FACE::RIGHT, 0, 2));
+            break;
+
+        // DFR
+        case 4:
+            str += getColorLetter(getColor(FACE::DOWN, 0, 2));
+            str += getColorLetter(getColor(FACE::FRONT, 2, 2));
+            str += getColorLetter(getColor(FACE::RIGHT, 2, 0));
+            break;
+
+        // DFL
+        case 5:
+            str += getColorLetter(getColor(FACE::DOWN, 0, 0));
+            str += getColorLetter(getColor(FACE::FRONT, 2, 0));
+            str += getColorLetter(getColor(FACE::LEFT, 2, 2));
+            break;
+
+        // DBR
+        case 6:
+            str += getColorLetter(getColor(FACE::DOWN, 2, 2));
+            str += getColorLetter(getColor(FACE::BACK, 2, 0));
+            str += getColorLetter(getColor(FACE::RIGHT, 2, 2));
+            break;
+
+        // DBL
+        case 7:
+            str += getColorLetter(getColor(FACE::DOWN, 2, 0));
+            str += getColorLetter(getColor(FACE::BACK, 2, 2));
+            str += getColorLetter(getColor(FACE::LEFT, 2, 0));
+            break;
+    }
+    return str;
+}
+
+// Convert corner colors to 5-bit representation
+int RubiksCubeBitboard::get5bitCorner(const std::string& corner) const {
+    int ret = 0;
+    std::string actual_str;
+
+    // Identify primary color (white/yellow)
+    for (char c : corner) {
+        if (c == 'W' || c == 'Y') {
+            actual_str += c;
+            if (c == 'Y') ret |= (1 << 2);
+        }
+    }
+
+    // Identify secondary color (red/orange)
+    for (char c : corner) {
+        if (c == 'R' || c == 'O') {
+            if (c == 'O') ret |= (1 << 1);
+        }
+    }
+
+    // Identify tertiary color (blue/green)
+    for (char c : corner) {
+        if (c == 'B' || c == 'G') {
+            if (c == 'G') ret |= (1 << 0);
+        }
+    }
+
+    // Determine orientation
+    if (corner[1] == actual_str[0]) {
+        ret |= (1 << 3);
+    } else if (corner[2] == actual_str[0]) {
+        ret |= (1 << 4);
+    }
+    return ret;
+}
+
+// Get all corners in a packed 64-bit representation
+uint64_t RubiksCubeBitboard::getCorners() {
+    uint64_t ret = 0;
+
+    // Pack all 8 corners (5 bits each = 40 bits total)
+    for (int i = 0; i < 8; i++) {
+        std::string cornerColors = getCornerColorString(i);
+        int cornerValue = get5bitCorner(cornerColors);
+        ret = (ret << 5) | cornerValue;
+    }
+
+    return ret;
 }
