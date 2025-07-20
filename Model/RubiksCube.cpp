@@ -86,7 +86,7 @@ RubiksCube &RubiksCube::invert(MOVE ind) {
 }
 
 void RubiksCube::print() const {
-    std::cout << "Rubik Cube:\n\n";
+    std::cout << "Rubik's Cube:\n\n";
 
     // UP face
     for (int row = 0; row < 3; row++) {

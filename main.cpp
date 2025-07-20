@@ -261,31 +261,43 @@ int main() {
     // iddfsSolver.rubiksCube.print();
     // CornerDBMaker Testing --------------------------------------------------------------------------
     try {
-        // CornerDBMaker Testing --------------------------------------------------------------------------
-        std::string fileName = "Databases/Depth9DB.txt";
-
-        // Check if database exists
+        // Database setup
+        const std::string fileName = "Databases/Depth9DB.txt";
         if (!fileExists(fileName)) {
-            cout << "Creating new database..." << endl;
+            std::cout << "Creating new database..." << std::endl;
             CornerDBMaker dbMaker(fileName, 0x99);
             dbMaker.bfsAndStore();
-            cout << "Database created successfully!" << endl;
+            std::cout << "Database created successfully!" << std::endl;
         } else {
-            cout << "Using existing database" << endl;
+            std::cout << "Using existing database" << std::endl;
         }
 
+        // Shuffle cube
         RubiksCubeBitboard cube;
-        auto shuffleMoves = cube.randomShuffleCube(12);
+        auto shuffleMoves = cube.randomShuffleCube(10);
         cube.print();
-        for (auto move: shuffleMoves) cout << cube.getMove(move) << " ";
-        cout << "\n";
+        std::cout << "Shuffle moves: ";
+        for (auto move : shuffleMoves) std::cout << cube.getMove(move) << " ";
+        std::cout << "\n\n";
 
-        IDAstarSolver<RubiksCubeBitboard, HashBitboard> idaStarSolver(cube, fileName);
-        auto moves = idaStarSolver.solve();
+        // Solve & time it
+        std::cout << "Solving..." << std::endl;
+        auto start = std::chrono::high_resolution_clock::now();
+        IDAstarSolver<RubiksCubeBitboard, HashBitboard> solver(cube, fileName);
+        auto solutionMoves = solver.solve();
+        auto end = std::chrono::high_resolution_clock::now();
 
-        idaStarSolver.rubiksCube.print();
-        for (auto move: moves) cout << cube.getMove(move) << " ";
-        cout << "\n";
+        // Print solution
+        solver.rubiksCube.print();
+        std::cout << "Solution moves: ";
+        for (auto move : solutionMoves) std::cout << cube.getMove(move) << " ";
+        std::cout << "\n";
+
+        // Print duration neatly
+        std::chrono::duration<double> elapsed = end - start;
+        std::cout << std::fixed << std::setprecision(3)
+                  << "Time taken to solve: " << elapsed.count() << " seconds"
+                  << std::endl;
     }
     catch (const char* msg) {
         std::cerr << "Error: " << msg << std::endl;
