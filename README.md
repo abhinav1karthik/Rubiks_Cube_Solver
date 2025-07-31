@@ -168,7 +168,7 @@ auto shuffleMoves = cube.randomShuffleCube(12); // Change scramble depth
 ```
 
 ### Using Existing Database
-Place database file in `Databases/CornerDepth11DB.txt` to skip creation
+Place database file in `Databases/CornerDepth9DB.txt` to skip creation
 
 ## File Structure <a name="file-structure"></a>
 ```
