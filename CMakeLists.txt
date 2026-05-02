@@ -39,3 +39,6 @@ add_executable(rubiks_cube_solver
 
 target_compile_definitions(rubiks_cube_solver PRIVATE HAVE_OPENCV)
 target_link_libraries(rubiks_cube_solver ${OpenCV_LIBS})
+
+add_executable(webcam_feed WebcamFeed.cpp)
+target_link_libraries(webcam_feed ${OpenCV_LIBS})
