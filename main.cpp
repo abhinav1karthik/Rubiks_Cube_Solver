@@ -1,8 +1,11 @@
 #include <iostream>
 #include <fstream>
+#include <chrono>
+#include <iomanip>
 #include <vector>
 #include <string>
 #include <unordered_map>
+#include "CameraScanner.h"
 #include "Model/RubiksCube3dArray.h"
 #include "Model/RubiksCube1dArray.h"
 #include "Model/RubiksCubeBitboard.h"
@@ -19,7 +22,40 @@ bool fileExists(const string& fileName) {
     return file.good();
 }
 
-int main() {
+bool hasNineOfEachColor(const RubiksCube &cube) {
+    int counts[6] = {0, 0, 0, 0, 0, 0};
+    for (int face = 0; face < 6; ++face) {
+        for (int row = 0; row < 3; ++row) {
+            for (int col = 0; col < 3; ++col) {
+                counts[static_cast<int>(cube.getColor(static_cast<RubiksCube::FACE>(face), row, col))]++;
+            }
+        }
+    }
+
+    for (int i = 0; i < 6; ++i) {
+        if (counts[i] != 9) return false;
+    }
+    return true;
+}
+
+int main(int argc, char **argv) {
+    if (argc > 1 && string(argv[1]) == "--scan") {
+        RubiksCube3dArray scannedCube;
+        if (!captureCubeState(scannedCube)) {
+            return 1;
+        }
+
+        cout << "Scanned cube state:\n";
+        scannedCube.print();
+
+        if (!hasNineOfEachColor(scannedCube)) {
+            cerr << "Invalid scan: each cube color must appear exactly 9 times. Rescan under steadier lighting.\n";
+            return 1;
+        }
+
+        return 0;
+    }
+
     // RubiksCube1dArray cube;
     // cube.print();
     // RubiksCube1dArray myrc=cube;

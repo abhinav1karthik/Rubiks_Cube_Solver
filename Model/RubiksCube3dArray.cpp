@@ -36,6 +36,10 @@ RubiksCube::COLOR RubiksCube3dArray::getColor(FACE face, unsigned row, unsigned 
     }
 }
 
+void RubiksCube3dArray::setColor(FACE face, unsigned row, unsigned col, COLOR color) {
+    cube[int(face)][row][col] = getColorLetter(color);
+}
+
 bool RubiksCube3dArray::isSolved() const {
     for (int i = 0; i < 6; i++) {
         for (int j = 0; j < 3; j++) {

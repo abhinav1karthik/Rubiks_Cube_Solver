@@ -26,6 +26,7 @@ public:
     RubiksCubeBitboard();
 
     COLOR getColor(FACE face, unsigned row, unsigned col) const override;
+    void setColor(FACE face, unsigned row, unsigned col, COLOR color) override;
     bool isSolved() const override;
 
     // Clockwise moves

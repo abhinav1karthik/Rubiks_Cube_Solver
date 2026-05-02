@@ -50,6 +50,15 @@ COLOR RubiksCubeBitboard::getColor(FACE face, unsigned row, unsigned col) const 
     return static_cast<COLOR>(bit_pos - 1);
 }
 
+void RubiksCubeBitboard::setColor(FACE face, unsigned row, unsigned col, COLOR color) {
+    int idx = arr[row][col];
+    if (idx == 8) return;
+
+    int faceIndex = static_cast<int>(face);
+    bitboard[faceIndex] &= ~(one_8 << (8 * idx));
+    bitboard[faceIndex] |= (uint64_t(1) << static_cast<int>(color)) << (8 * idx);
+}
+
 bool RubiksCubeBitboard::isSolved() const {
     for (int i = 0; i < 6; i++) {
         if (all_colors[i] != bitboard[i]) return false;

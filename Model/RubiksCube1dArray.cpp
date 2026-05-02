@@ -39,6 +39,10 @@ RubiksCube::COLOR RubiksCube1dArray::getColor(FACE face, unsigned row, unsigned 
     }
 }
 
+void RubiksCube1dArray::setColor(FACE face, unsigned row, unsigned col, COLOR color) {
+    cube[getIndex(int(face), row, col)] = getColorLetter(color);
+}
+
 bool RubiksCube1dArray::isSolved() const {
     for (int i = 0; i < 6; i++) {
         for (int j = 0; j < 3; j++) {
